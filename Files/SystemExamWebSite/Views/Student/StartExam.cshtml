@@ -1,0 +1,267 @@
+﻿@model  SystemExamWebSite.Models.ExamModel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان أونلاين | بداية  الامتحان  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/logonew.png">
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/assets/js/modernizr.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="mt-2">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="p-2 m-0 text-center">
+                <h3> <img src="~/assets/images/logoblue.png" width="120" height="50" /></h3>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu" class="pt-0 mt-0">
+                <!-- Left Menu Start -->
+                <ul class="metismenu text-right" id="side-menu">
+                    <li>
+                        <p class="text-center" style="font-size:15px"> الوقت المتبقي</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px" id="timer"> 00:00</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:15px"> اسم الامتحان</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.Name</p>
+                    </li>
+
+                    <li>
+                        <p class="text-center" style="font-size:15px"> درجات الامتحان</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.Degre</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:15px"> تم بواسطة  </p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.By</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:15px"> الوقت الكلي</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.Mint</p>
+                    </li>
+                 
+
+                </ul>
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @using (Html.BeginForm("", "", new { area = "" }, FormMethod.Post, new { id = "Form", @class = "form-horizontal" }))
+                            {
+                                <p class="text-center" style="font-size:20px"> الاسئلة الاختيارية</p>
+                                <div class="panel-default">
+                                    <div class="panel-heading text-center">
+                                        كم عدد حروف اللغة الانجليزية ؟
+                                    </div>
+                                    <br />
+                                    <div class="panel-body text-right" dir="rtl">
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) 25
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) 26
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) 27
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) 28
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="panel-default">
+                                    <div class="panel-heading text-center">
+                                Design Pattern
+                                    </div>
+                                    <br />
+                                    <div class="panel-body text-right" dir="rtl">
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) MVC
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) Singlton
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) Builder
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) All
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="panel-default">
+                                    <div class="panel-heading text-center">
+                                        56+20
+                                    </div>
+                                    <br />
+                                    <div class="panel-body text-right" dir="rtl">
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) 80
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) 67
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) 76
+                                        </div>
+                                        <div class="md-radio">
+                                            @Html.RadioButton("Question", true, new { @class = "md-radiobtn" }) 90
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <input type="button" name="name" value="تم" class="btn btn-dark" />
+
+                            }        
+                        </div>
+                    </div>
+                </div>
+                <!-- container -->
+                <div class="footer">
+                    <div class="pull-right hide-phone">
+                        محمد عيد 2020
+                    </div>
+                </div>
+            </div> <!-- content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/jquery.core.js"></script>
+    <script src="~/assets/js/jquery.app.js"></script>
+    <script type="text/javascript">
+        var Scounds =  @ViewBag.Time,
+            CountDiv = document.getElementById('timer'),
+            ScoundPass,
+            CountDown;
+        CountDown = setInterval(function () {
+            ScoundPass();
+
+        }, 1000);
+
+        function ScoundPass() {
+            var mint = Math.floor(Scounds / 60),
+                RemiScound = Scounds % 60;
+            if (Scounds<10)
+            {
+                RemiScound = "0" + RemiScound;
+
+            }
+            CountDiv.innerHTML = mint + ":" + RemiScound;
+            if(Scounds>0)
+            {
+                Scounds = Scounds - 1;
+            }
+            else
+            {
+                clearInterval(CountDown);
+                CountDiv.innerHTML = "تم إنتهاء الامتحان"
+
+            }
+            function EndExam() {
+                window.location.href ="@Url.Action("ExamResult", "Student")"
+            }
+
+            setTimeout(function () {
+                EndExam();
+            },Scounds*1000 + 5000);
+        }
+
+        window.onbeforeunload = function() {
+            return "you can not refresh the page";
+        }
+
+        // Menu
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+
+
+        // Full Sccreen
+        document.addEventListener("dblclick", () => {
+
+            document.documentElement.requestFullscreen().catch((e) => {
+                console.log(e);
+            });
+        });
+        // key Disabled
+
+        document.onkeydown = function (e) {
+            e.preventDefault();
+        }
+
+        $.each($("#Form").serializeArray(), function (key, value) {
+            data.append(this.name, this.value);
+        });
+
+
+    </script>
+
+</body>
+</html>

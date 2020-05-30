@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExamSystemModelStoreContainer" CdmEntityContainer="ExamSystemEntities">
+    <EntitySetMapping Name="tbl_Admin">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Admin">
+        <MappingFragment StoreEntitySet="tbl_Admin">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Admin_CreatedOn" ColumnName="Admin_CreatedOn" />
+          <ScalarProperty Name="Admin_Phone" ColumnName="Admin_Phone" />
+          <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
+          <ScalarProperty Name="Admin_Email" ColumnName="Admin_Email" />
+          <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Announcement">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Announcement">
+        <MappingFragment StoreEntitySet="tbl_Announcement">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+          <ScalarProperty Name="Level_Id" ColumnName="Level_Id" />
+          <ScalarProperty Name="Teacher_Id" ColumnName="Teacher_Id" />
+          <ScalarProperty Name="Announcement_CreatedOn" ColumnName="Announcement_CreatedOn" />
+          <ScalarProperty Name="Announcement_Details" ColumnName="Announcement_Details" />
+          <ScalarProperty Name="Announcement_Title" ColumnName="Announcement_Title" />
+          <ScalarProperty Name="Announcement_Id" ColumnName="Announcement_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Department">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Department">
+        <MappingFragment StoreEntitySet="tbl_Department">
+          <ScalarProperty Name="Department_Code" ColumnName="Department_Code" />
+          <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+          <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Exam">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Exam">
+        <MappingFragment StoreEntitySet="tbl_Exam">
+          <ScalarProperty Name="Exam_CreatedOn" ColumnName="Exam_CreatedOn" />
+          <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
+          <ScalarProperty Name="Teacher_Id" ColumnName="Teacher_Id" />
+          <ScalarProperty Name="Exam_PassingMark" ColumnName="Exam_PassingMark" />
+          <ScalarProperty Name="Exam_EndOn" ColumnName="Exam_EndOn" />
+          <ScalarProperty Name="Exam_StartOn" ColumnName="Exam_StartOn" />
+          <ScalarProperty Name="Exam_TotalMark" ColumnName="Exam_TotalMark" />
+          <ScalarProperty Name="Exam_MuniteDuration" ColumnName="Exam_MuniteDuration" />
+          <ScalarProperty Name="Exam_Instruction" ColumnName="Exam_Instruction" />
+          <ScalarProperty Name="Exam_Name" ColumnName="Exam_Name" />
+          <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Level">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Level">
+        <MappingFragment StoreEntitySet="tbl_Level">
+          <ScalarProperty Name="Level_Code" ColumnName="Level_Code" />
+          <ScalarProperty Name="Level_Name" ColumnName="Level_Name" />
+          <ScalarProperty Name="Level_Id" ColumnName="Level_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_QuestionMCQ">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_QuestionMCQ">
+        <MappingFragment StoreEntitySet="tbl_QuestionMCQ">
+          <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+          <ScalarProperty Name="Teacher_Id" ColumnName="Teacher_Id" />
+          <ScalarProperty Name="QuestionMCQ_Mark" ColumnName="QuestionMCQ_Mark" />
+          <ScalarProperty Name="QuestionMCQ_CorrectAnswer" ColumnName="QuestionMCQ_CorrectAnswer" />
+          <ScalarProperty Name="QuestionMCQ_OptionD" ColumnName="QuestionMCQ_OptionD" />
+          <ScalarProperty Name="QuestionMCQ_OptionC" ColumnName="QuestionMCQ_OptionC" />
+          <ScalarProperty Name="QuestionMCQ_OptionB" ColumnName="QuestionMCQ_OptionB" />
+          <ScalarProperty Name="QuestionMCQ_OptionA" ColumnName="QuestionMCQ_OptionA" />
+          <ScalarProperty Name="QuestionMCQ_Text" ColumnName="QuestionMCQ_Text" />
+          <ScalarProperty Name="QuestionMCQ_Id" ColumnName="QuestionMCQ_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_QuestionTrueFalse">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_QuestionTrueFalse">
+        <MappingFragment StoreEntitySet="tbl_QuestionTrueFalse">
+          <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+          <ScalarProperty Name="Teacher_Id" ColumnName="Teacher_Id" />
+          <ScalarProperty Name="QuestionTrueFalse_Mark" ColumnName="QuestionTrueFalse_Mark" />
+          <ScalarProperty Name="QuestionTrueFalse_CorrectAnswer" ColumnName="QuestionTrueFalse_CorrectAnswer" />
+          <ScalarProperty Name="QuestionTrueFalse_OptionB" ColumnName="QuestionTrueFalse_OptionB" />
+          <ScalarProperty Name="QuestionTrueFalse_OptionA" ColumnName="QuestionTrueFalse_OptionA" />
+          <ScalarProperty Name="QuestionTrueFalse_text" ColumnName="QuestionTrueFalse_text" />
+          <ScalarProperty Name="QuestionTrueFalse_Id" ColumnName="QuestionTrueFalse_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Result">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Result">
+        <MappingFragment StoreEntitySet="tbl_Result">
+          <ScalarProperty Name="Student_Mark" ColumnName="Student_Mark" />
+          <ScalarProperty Name="Exam_Id" ColumnName="Exam_Id" />
+          <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+          <ScalarProperty Name="Result_Id" ColumnName="Result_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Student">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Student">
+        <MappingFragment StoreEntitySet="tbl_Student">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+          <ScalarProperty Name="Level_Id" ColumnName="Level_Id" />
+          <ScalarProperty Name="Student_CreatedOn" ColumnName="Student_CreatedOn" />
+          <ScalarProperty Name="Student_Phone" ColumnName="Student_Phone" />
+          <ScalarProperty Name="Student_Password" ColumnName="Student_Password" />
+          <ScalarProperty Name="Student_Email" ColumnName="Student_Email" />
+          <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+          <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Subject">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Subject">
+        <MappingFragment StoreEntitySet="tbl_Subject">
+          <ScalarProperty Name="Teacher_Id" ColumnName="Teacher_Id" />
+          <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+          <ScalarProperty Name="Level_Id" ColumnName="Level_Id" />
+          <ScalarProperty Name="Subject_CreatedOn" ColumnName="Subject_CreatedOn" />
+          <ScalarProperty Name="Subject_Code" ColumnName="Subject_Code" />
+          <ScalarProperty Name="Subject_Name" ColumnName="Subject_Name" />
+          <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Teacher">
+      <EntityTypeMapping TypeName="ExamSystemModel.tbl_Teacher">
+        <MappingFragment StoreEntitySet="tbl_Teacher">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsAccepted" ColumnName="IsAccepted" />
+          <ScalarProperty Name="Teacher_CreatedOn" ColumnName="Teacher_CreatedOn" />
+          <ScalarProperty Name="Teacher_Phone" ColumnName="Teacher_Phone" />
+          <ScalarProperty Name="Teacher_Password" ColumnName="Teacher_Password" />
+          <ScalarProperty Name="Teacher_Email" ColumnName="Teacher_Email" />
+          <ScalarProperty Name="Teacher_Name" ColumnName="Teacher_Name" />
+          <ScalarProperty Name="Teacher_Id" ColumnName="Teacher_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

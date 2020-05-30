@@ -1,0 +1,206 @@
+﻿@model SystemExamWebSite.DataBase.tbl_Teacher
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان أونلاين | إدارة هيئة المدرسين </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/logonew.png">
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/assets/js/modernizr.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="mt-2">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="p-2 m-0 text-center">
+                <h3> <img src="~/assets/images/logoblue.png" width="120" height="50" /></h3>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu" class="pt-0 mt-0">
+                <!-- Left Menu Start -->
+                <ul class="metismenu text-right" id="side-menu">
+                    <li>
+                        <a href="" class="" onclick="return false">
+                            <span> الرئيسية </span>   <i class="ti-bookmark"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة المسئولين </span> <i class="ti-desktop"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة المستويات </span> <i class="ti-book"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة الأقسام </span>  <i class="ti-book"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة هيئة التدريس </span> <i class="ti-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة الطلاب </span>  <i class="ti-id-badge"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> طلبات هيئة التدريس </span>  <i class="ti-location-arrow"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> الإعدادت </span>  <i class="ti-settings"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> تسجيل خروج </span>  <i class="ti-export"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="header-title m-t-0 m-b-20 text-right">  بيانات مدرس <span class="fa fa-eye"> </span></h4>
+                            <h4 class="text-right text-custom"> <span>@Html.DisplayFor(model => model.Teacher_Id) </span> المعرف الخاص بالمدرس </h4>
+                            <table class="table table-bordered table-condensed" style="width:100%;">
+                                <tr>
+                                    <td style="width:65%">
+                                        <p class="text-right">@Html.DisplayFor(model => model.Teacher_Name) </p>
+                                    </td>
+                                    <td style="width:35%">
+                                        <p class="text-right">اسم المدرس</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:65%">
+                                        <p class="text-right">@Html.DisplayFor(model => model.Teacher_Email) </p>
+                                    </td>
+                                    <td style="width:35%">
+                                        <p class="text-right">البريد الإلكتروني</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:65%">
+                                        <p class="text-right">@Html.DisplayFor(model => model.Teacher_Password) </p>
+                                    </td>
+                                    <td style="width:35%">
+                                        <p class="text-right">كلمة المرور</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:65%">
+                                        <p class="text-right">@Html.DisplayFor(model => model.Teacher_Phone) </p>
+                                    </td>
+                                    <td style="width:35%">
+                                        <p class="text-right">رقم التليفون</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:65%">
+                                        <p class="text-right">@Html.DisplayFor(model => model.Teacher_CreatedOn) </p>
+                                    </td>
+                                    <td style="width:35%">
+                                        <p class="text-right">تاريخ الإضافة</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:65%">
+                                        <p class="text-right">مقبول</p>
+                                    </td>
+                                    <td style="width:35%">
+                                        <p class="text-right">حالة المدرس</p>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+
+
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <div class="row">
+                                    @Html.ActionLink("العودة للصفحة السابقة", "TeacherMangement", "Admin", new { id = "" }, new { @class = "btn-custom-secondary" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- container -->
+                <div class="footer">
+                    <div class="pull-right hide-phone">
+                        محمد عيد 2020
+                    </div>
+                </div>
+            </div> <!-- content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/jquery.core.js"></script>
+    <script src="~/assets/js/jquery.app.js"></script>
+
+</body>
+</html>

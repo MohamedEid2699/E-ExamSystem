@@ -1,0 +1,265 @@
+﻿@model SystemExamWebSite.Models.LoginStudent
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان | تسجيل دخول </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+ 
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/w3css.css" rel="stylesheet" />
+    <link href="~/Content/CustomStyle.css" rel="stylesheet" />
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script src="~/Scripts/kendo/kendo.all.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.datepicker.min.js"></script>
+
+    <script src="~/Scripts/CustomGeneral.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="~/Images/logonew.png" type="image/x-icon" /> <!--browser's tab icon-->
+    <style>
+        body {
+            padding-top: 10px;
+        }
+
+        .w3-container {
+            background-color: white;
+        }
+
+        .descriptionText {
+            padding-top: 10px;
+            font-size: 17px;
+        }
+
+        .row-container {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .btn-custom {
+            width: 100%;
+        }
+
+        .w3-third {
+            padding-right: 10px;
+        }
+
+        .title-container {
+            padding: 8px 0px 32px 0px;
+        }
+
+        .homepageContainer {
+            padding: 50px;
+        }
+
+        media (max-width:415px) {
+            #myNavbar;
+
+        {
+            width: 100%;
+        }
+
+        footer {
+            width: 100%;
+        }
+
+        .homepageContainer {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .row-container {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .w3-third {
+            padding-right: 0px;
+        }
+
+        .row {
+            padding-left: 5px;
+            padding-right: 5px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:0;margin-right:0;margin-top:30px;padding:0">
+
+        <!-- Navbar (sit on top) -->
+        <div class="w3-top">
+            <div class="w3-bar w3-custom w3-card" id="myNavbar" style="background-color: #428bca;color: white;">
+                <a href="@Url.Action("Index","Home")" class="w3-bar-item w3-button"> <span class="tit">إمتحان </span><i class="glyphicon glyphicon-bookmark"></i></a>
+                <!-- Right-sided navbar links -->
+                <div class="w3-right w3-hide-small">
+                    <a href="@Url.Action("Index","Home")" class="w3-bar-item w3-button"> الرئيسية</a>
+                </div>
+                <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Sidebar on small screens when clicking the menu icon -->
+    <nav class="w3-sidebar w3-bar-block w3-custom w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none;z-index:3;width:200px;" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">إغلاق</a>
+        <a href="@Url.Action("Index","Home")" onclick="w3_close()" class="w3-bar-item w3-button">الرئيسية</a>
+        
+    </nav>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    <br />
+
+    <div class="row row-container" style="padding-top:20px">
+        <div class="row col-md-12">
+            <header class="row text-center">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item" style="color:#428bca"><i class="fa fa-child"></i> تسجيل دخول خاص بالطلاب</li>
+                </ul>
+            </header>
+        </div>
+
+        <div class="row col-md-12 text-center">
+            <div class="well col-md-7 center-block" style="float:none">
+                <div class="col-md-12 center-block" style="float:none">
+                    <div class="row text-center"><img src="~/Images/535521.svg" alt="Student" style="width: 150px;height: 150px" /></div>
+                    <br />
+                    @if (ViewBag.msg != null)
+                    {
+                        <div class="alert-warning" style="width:100%">
+                            @ViewBag.msg
+                        </div>
+                    }
+                    <br />
+                    
+ 
+                    @using (Html.BeginForm("StudentLogin", "Home",FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        
+
+                        //Student_Email
+                        <div class="form-group">
+                            <div class="row">
+                                @Html.TextBoxFor(m => m.Student_Email, new { @class = "form-control", @type = "email", @placeholder = "البريد الإلكتروني" })
+                            </div>
+                            <div class="row ">
+                                @Html.ValidationMessageFor(m => m.Student_Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        //Password
+                        <div class="form-group">
+                            <div class="row">
+                                @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "كلمة السر", @type = "password" })
+                            </div>
+                            <div class="row ">
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+             
+
+                        <div class="form-group">
+
+                            <div class="row ">
+                                <input type="submit" class="btn btn-custom" role="button" style="background-color:#428bca;" value="تسجيل دخول" />
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="row ">
+                                @Html.ActionLink("ليس لديك حساب ؟ إنشاءحساب جديد ", "StudentRegister", "Home", new { @style = "color:#428bca" })
+                            </div>
+                        </div>
+
+
+                    }
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!-- Footer -->
+    <footer class="w3-center w3-custom w3-padding-16" style="background-color: #428bca ;color: white;">
+        <!--If want to include feature "go to the top" uncomment the following line-->
+
+
+        <div class="w3-xlarge w3-section">
+            <p>
+                <i class="fa fa-user"></i>
+            </p>
+        </div>
+        <p style="font-size:18px"> محمد عيد 2020 </p>
+    </footer>
+    <!-- End page content -->
+
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    
+    <script src="~/Scripts/kendo/kendo.all.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.datepicker.min.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <script>
+        // Toggle between showing and hiding the sidebar
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                $('#mySidebar').hide();
+                $('#myOverlay').hide();
+            } else {
+                $('#mySidebar').show();
+                $('#myOverlay').show();
+            }
+        }
+        // Close the sidebar with the close button
+        function w3_close() {
+            $('#mySidebar').hide();
+            $('#myOverlay').hide();
+        }
+    </script>
+</body>
+</html>
+
+
+

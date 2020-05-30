@@ -1,0 +1,213 @@
+﻿@model SystemExamWebSite.DataBase.tbl_Subject
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان أونلاين | إدارة المواضيع </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/logonew.png">
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/assets/js/modernizr.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="mt-2">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="p-2 m-0 text-center">
+                <h3> <img src="~/assets/images/logoblue.png" width="120" height="50" /></h3>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu" class="pt-0 mt-0">
+                <!-- Left Menu Start -->
+                <ul class="metismenu text-right" id="side-menu">
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> الرئيسية </span>   <i class="ti-bookmark"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة الإعلانات </span> <i class="ti-announcement"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة المواضيع </span> <i class="ti-file"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة الامتحانات </span>  <i class="ti-agenda"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة الاسئلة  </span> <i class="ti-help"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> الطلاب </span>  <i class="ti-id-badge"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> نتائج الامتحانات </span>  <i class="ti-cup"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> الإعدادت </span>  <i class="ti-settings"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> تسجيل خروج </span>  <i class="ti-export"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="header-title m-t-0 m-b-20 text-right">  إضافة موضوع <span class="ti-plus"> </span></h4>
+
+
+                            <br />
+                            @if (ViewBag.msg != null)
+                            {
+                                <div class="alert-warning" style="width:100%">
+                                    @ViewBag.msg
+                                </div>
+                            }
+                            <br />
+                            @using (Html.BeginForm("AddSubject", "Teacher", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                //Subject_Name
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Subject_Name, new { @class = "form-control", @placeholder = "اسم الموضوع" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Subject_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                //Subject_Code
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Subject_Code, new { @class = "form-control", @placeholder = "كود الموضوع" ,@maxlength=9})
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Subject_Code, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                //Level_Id
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.DropDownListFor(m => m.Level_Id, (IEnumerable<SelectListItem>)ViewData["Levels"], "-- اختر المستوى --", new { @class = "form-control" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Level_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                //Department_ID
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.DropDownListFor(m => m.Department_Id, (IEnumerable<SelectListItem>)ViewData["Departments"], "-- اختر القسم --", new { @class = "form-control" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Department_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                //Buttons
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <input type="submit" class="btn btn-custom" role="button" style="background-color:#428bca; width:600px;" value="إضافة" />
+                                    </div>
+                                </div>
+                            }
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <div class="row">
+                                    @Html.ActionLink("العودة للصفحة السابقة", "SubjectManagement", "Teacher", new { id = "" }, new { @class = "btn-custom-secondary" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- container -->
+                <div class="footer">
+                    <div class="pull-right hide-phone">
+                        محمد عيد 2020
+                    </div>
+                </div>
+            </div> <!-- content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/jquery.core.js"></script>
+    <script src="~/assets/js/jquery.app.js"></script>
+
+</body>
+</html>

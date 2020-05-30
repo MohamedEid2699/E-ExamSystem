@@ -1,0 +1,265 @@
+﻿@model SystemExamWebSite.DataBase.tbl_Exam
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان أونلاين | إدارة الامتحانات </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/logonew.png">
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+
+    <script src="~/assets/js/modernizr.min.js"></script>
+
+    <link href="~/Scripts/jquery.datetimepicker.css" rel="stylesheet" />
+
+</head>
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="mt-2">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="p-2 m-0 text-center">
+                <h3> <img src="~/assets/images/logoblue.png" width="120" height="50" /></h3>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu" class="pt-0 mt-0">
+                <!-- Left Menu Start -->
+                <ul class="metismenu text-right" id="side-menu">
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> الرئيسية </span>   <i class="ti-bookmark"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة الإعلانات </span> <i class="ti-announcement"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة المواضيع </span> <i class="ti-file"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة الامتحانات </span>  <i class="ti-agenda"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> إدارة الاسئلة  </span> <i class="ti-help"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> الطلاب </span>  <i class="ti-id-badge"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> نتائج الامتحانات </span>  <i class="ti-cup"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> الإعدادت </span>  <i class="ti-settings"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onclick="return false">
+                            <span> تسجيل خروج </span>  <i class="ti-export"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="header-title m-t-0 m-b-20 text-right">  تعديل امتحان <span class="fa fa-edit"> </span></h4>
+
+
+                            <br />
+                            @if (ViewBag.msg != null)
+                            {
+                                <div class="alert-danger text-center" style="font-size:20px;">
+                                    @ViewBag.msg
+                                </div>
+                            }
+                            <br />
+                            @using (Html.BeginForm("EditExam", "Teacher", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.Exam_Id)
+
+                                //Subject_Id
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.DropDownListFor(m => m.Subject_Id, (IEnumerable<SelectListItem>)ViewData["Subject"], "-- اختر الموضوع --", new { @class = "form-control" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Subject_Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                //Exam_Name
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Exam_Name, new { @class = "form-control", @placeholder = "اسم الامتحان" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Exam_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                //Exam_Instruction
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Exam_Instruction, new { @class = "form-control", @placeholder = "تفاصيل الامتحان" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Exam_Instruction, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                //Exam_MuniteDuration
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Exam_MuniteDuration, new { @class = "form-control", @maxlength = 2, @placeholder = "مدة الامتحان بالدقائق" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Exam_MuniteDuration, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                //Exam_TotalMark
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Exam_TotalMark, new { @class = "form-control", @maxlength = 3, @placeholder = "درجات الامتحان" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Exam_TotalMark, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                //Exam_PassingMark
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Exam_PassingMark, new { @class = "form-control", @maxlength = 3, @placeholder = "درجات النجاح في الامتحان" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Exam_PassingMark, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                //Exam_StartOn
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Exam_StartOn, new { @id = "start", @class = "form-control", @autocomplete = "off", @placeholder = "بداية ظهور الامتحان" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Exam_StartOn, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                //Exam_EndOn
+                                <div class="form-group">
+                                    <div class="row">
+                                        @Html.TextBoxFor(m => m.Exam_EndOn, new { @id = "end", @class = "form-control", @placeholder = "نهاية ظهور الامتحان", @autocomplete = "off" })
+                                    </div>
+                                    <div class="row ">
+                                        @Html.ValidationMessageFor(m => m.Exam_EndOn, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                //Buttons
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <input type="submit" class="btn btn-default" role="button" style="background-color:#428bca; width:600px;" value="تعديل" />
+                                    </div>
+                                </div>
+                            }
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <div class="row">
+                                    @Html.ActionLink("العودة للصفحة السابقة", "ExamManagement", "Teacher", new { id = "" }, new { @class = "btn-custom-secondary" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- container -->
+                <div class="footer">
+                    <div class="pull-right hide-phone">
+                        محمد عيد 2020
+                    </div>
+                </div>
+            </div> <!-- content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/jquery.core.js"></script>
+    <script src="~/assets/js/jquery.app.js"></script>
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.datetimepicker.full.js"></script>
+    <script>
+        var da = new Date();
+        $('#start').datetimepicker({
+            lang: 'en',
+            startDate: da.getDate.toString(),
+            startTime: da.getTime.toString(),
+            step: 5
+        });
+        $('#end').datetimepicker({
+            lang: 'en',
+            startDate: da.getDate.toString(),
+            startTime: da.getTime.toString(),
+            step: 5
+        });
+    </script>
+
+</body>
+</html>

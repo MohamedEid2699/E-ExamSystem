@@ -1,0 +1,234 @@
+﻿@model  SystemExamWebSite.Models.QustionAll
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان أونلاين | عرض الاسئلة </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/logonew.png">
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/assets/js/modernizr.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="mt-2">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="p-2 m-0 text-center">
+                <h3> <img src="~/assets/images/logoblue.png" width="120" height="50" /></h3>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu" class="pt-0 mt-0">
+                <!-- Left Menu Start -->
+                <ul class="metismenu text-right" id="side-menu">
+                    <li>
+                        <p class="text-center" style="font-size:15px"> اسم الامتحان</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.Name</p>
+                    </li>
+
+                    <li>
+                        <p class="text-center" style="font-size:15px"> درجات الامتحان</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.Degre</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:15px"> حالة الامتحان</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.Statue</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:15px"> الوقت الكلي</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.Mint</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:15px"> بداية الامتحان</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.Start</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:15px"> نهاية الامتحان</p>
+                    </li>
+                    <li>
+                        <p class="text-center" style="font-size:20px"> @ViewBag.End</p>
+                    </li>
+
+                </ul>
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p class="text-center w3-hover-text-deep-orange" style="font-size:20px">
+                                الاسئلة الاختيارية
+                            </p>
+                            <br />
+                            @foreach (var item in Model.Mcq)
+                            {
+                                if (Model.Mcq.Count() == 0)
+                                {
+                                    <p class="text-center" style="font-size:22px"> لا توجد اسئلة اختيارية </p>
+                                }
+                                else
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading text-center">
+                                            @Html.DisplayFor(modelItem => item.QuestionMCQ_Text)
+                                        </div>
+                                        <div class="panel-body">
+                                            @Html.RadioButton("R", @Html.DisplayFor(modelItem => item.QuestionMCQ_OptionA))
+                                            @Html.DisplayFor(modelItem => item.QuestionMCQ_OptionA)
+                                            <br />
+                                            @Html.RadioButton("R", @Html.DisplayFor(modelItem => item.QuestionMCQ_OptionB))
+                                            @Html.DisplayFor(modelItem => item.QuestionMCQ_OptionB)
+                                            <br />
+                                            @Html.RadioButton("R", @Html.DisplayFor(modelItem => item.QuestionMCQ_OptionC))
+                                            @Html.DisplayFor(modelItem => item.QuestionMCQ_OptionC)
+                                            <br />
+                                            @Html.RadioButton("R", @Html.DisplayFor(modelItem => item.QuestionMCQ_OptionD))
+                                            @Html.DisplayFor(modelItem => item.QuestionMCQ_OptionD)
+                                        </div>
+                                        <div class="panel-footer text-success text-center">
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td> @Html.DisplayFor(modelItem => item.QuestionMCQ_CorrectAnswer) </td>
+                                                    <td> الاجابة الصحيحة </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td> @Html.DisplayFor(modelItem => item.QuestionMCQ_Mark) </td>
+                                                    <td> درجة السؤال </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                            <hr />
+                            <p class="text-center w3-hover-text-deep-orange" style="font-size:20px">
+                                الاسئلة التصحيحة
+                            </p>
+                            <br />
+                            @foreach (var item in Model.TF)
+                            {
+                                if (Model.TF.Count() == 0)
+                                {
+                                    <p class="text-center" style="font-size:22px"> لا توجد اسئلة تصحيحة </p>
+                                }
+                                else
+                                {
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading text-center">
+                                            @Html.DisplayFor(modelItem => item.QuestionTrueFalse_text)
+                                        </div>
+                                        <div class="panel-body">
+                                            @Html.RadioButton("t", @Html.DisplayFor(modelItem => item.QuestionTrueFalse_OptionA))
+                                            @Html.DisplayFor(modelItem => item.QuestionTrueFalse_OptionA)
+                                            <br />
+                                            @Html.RadioButton("t", @Html.DisplayFor(modelItem => item.QuestionTrueFalse_OptionB))
+                                            @Html.DisplayFor(modelItem => item.QuestionTrueFalse_OptionB)
+                                           
+                                        </div>
+                                        <div class="panel-footer text-success text-center">
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td> @Html.DisplayFor(modelItem => item.QuestionTrueFalse_CorrectAnswer) </td>
+                                                    <td> الاجابة الصحيحة </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td> @Html.DisplayFor(modelItem => item.QuestionTrueFalse_Mark) </td>
+                                                    <td> درجة السؤال </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                          
+
+
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <div class="row">
+                                    @Html.ActionLink("العودة للصفحة السابقة", "QuestionsMangement", "Teacher", new { id = "" }, new { @class = "btn-custom-secondary" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- container -->
+                <div class="footer">
+                    <div class="pull-right hide-phone">
+                        محمد عيد 2020
+                    </div>
+                </div>
+            </div> <!-- content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/jquery.core.js"></script>
+    <script src="~/assets/js/jquery.app.js"></script>
+
+</body>
+</html>

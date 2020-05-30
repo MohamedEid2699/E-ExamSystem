@@ -1,0 +1,554 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان أونلاين </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.material.min.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/w3css.css" rel="stylesheet" />
+    <link href="~/Content/CustomStyle.css" rel="stylesheet" />
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script src="~/Scripts/kendo/kendo.all.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+    <script src="~/Scripts/kendo/kendo.datepicker.min.js"></script>
+
+    <script src="~/Scripts/CustomGeneral.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="~/Images/logonew.png" type="image/x-icon" /> <!--browser's tab icon-->
+    <style>
+        body {
+            padding-top: 10px;
+        }
+
+        .w3-container {
+            background-color: white;
+        }
+
+        .descriptionText {
+            padding-top: 10px;
+            font-size: 17px;
+        }
+
+        .row-container {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .btn-custom {
+            width: 100%;
+        }
+
+        .w3-third {
+            padding-right: 10px;
+        }
+
+        .title-container {
+            padding: 8px 0px 32px 0px;
+        }
+
+        .homepageContainer {
+            padding: 50px;
+        }
+
+        media (max-width:415px) {
+            #myNavbar {
+                width: 100%;
+            }
+
+            footer {
+                width: 100%;
+            }
+
+            .homepageContainer {
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+
+            .row-container {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+
+            .w3-third {
+                padding-right: 0px;
+            }
+
+            .row {
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:0;margin-right:0;margin-top:30px;padding:0">
+
+        <!-- Navbar (sit on top) -->
+        <div class="w3-top">
+            <div class="w3-bar w3-custom w3-card" id="myNavbar" style="background-color: #428bca;color: white;">
+                <a href="@Url.Action("Index","Home")" class="w3-bar-item w3-button"> <span class="tit">إمتحان </span><i class="glyphicon glyphicon-bookmark"></i></a>
+                <!-- Right-sided navbar links -->
+                <div class="w3-right w3-hide-small">
+                    <a href="#teacherFaq" class="w3-bar-item w3-button"> أسئلة شائعة خاصة بالمدرسين</a>
+                    <a href="#studentFaq" class="w3-bar-item w3-button"> أسئلة شائعة خاصة بالطلاب</a>
+                    <a href="#generalFaq" class="w3-bar-item w3-button"> أسئلة شائعة</a>
+                    <a href="#login" class="w3-bar-item w3-button"> الرئيسية</a>
+                </div>
+                <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        </div>
+        <!-- Sidebar on small screens when clicking the menu icon -->
+        <nav class="w3-sidebar w3-bar-block w3-custom w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none;z-index:3;width:200px;" id="mySidebar">
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">إغلاق</a>
+            <a href="#login" onclick="w3_close()" class="w3-bar-item w3-button">الرئيسية</a>
+            <a href="#generalFaq" onclick="w3_close()" class="w3-bar-item w3-button">أسئلة شائعة</a>
+            <a href="#studentFaq" onclick="w3_close()" class="w3-bar-item w3-button">أسئلة شائعة خاصة بالطلاب</a>
+            <a href="#teacherFaq" onclick="w3_close()" class="w3-bar-item w3-button">أسئلة شائعة خاصة بالمدرسين</a>
+        </nav>
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+
+        <div class="w3-container homepageContainer" id="login">
+            <div class="row row-container">
+                <div class="row col-md-12">
+                    <header class="row text-center" style="padding-bottom:16px;padding-top:10px">
+                        <h3> <img src="~/Images/logoblue.png" width="120" height="50"/></h3>
+                    </header>
+                </div>
+                <div class="row col-md-12">
+                </div>
+
+                <div class="w3-third w3-margin-bottom text-center ">
+                    <div class="w3-card-4">
+                        <div class="w3-container text-center">
+                            <h3><b>مدرس</b></h3>
+                            <h4 class="w3-opacity">تسجيل دخول كمدرس</h4>
+                        </div>
+                        <img src="~/Images/539001.svg" alt="Teacher" style="width: 200px;height: 200px">
+                        <div class="w3-container">
+                            <p class="descriptionText"> يمكن للمدرس إدارة الإعلانات  وكذلك إدارة مواضيع الامتحانات وأيضا إدارة الامتحانات و وضع الاسئلة و نتائج الامتحانات وكذلك رؤية الطلاب </p>
+                            <br>
+                            <p><a class="btn btn-custom" style="background-color: #428bca" href="@Url.Action("TeacherLogin","Home")">تسجيل الدخول</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-third w3-margin-bottom text-center ">
+                    <div class="w3-card-4">
+                        <div class="w3-container text-center">
+                            <h3><b>طالب</b></h3>
+                            <h4 class="w3-opacity">تسجيل الدخول كطالب</h4>
+                        </div>
+                        <img src="~/Images/535521.svg" alt="Student" style="width: 200px;height: 200px">
+                        <div class="w3-container">
+                            <p class="descriptionText"> يمكن للطالب دخول الامتحان من خلال النظام ورؤية الاعلانات التي ينشرها هيئة التدريس ويمكنه رؤية الامتحانات المتاحة ونتائجه السابقة  </p>
+                            <br>
+                            <p><a class="btn btn-custom" style="background-color: #428bca" href="@Url.Action("StudentLogin","Home")">تسجيل دخول</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-third w3-margin-bottom text-center" style="padding-right:0px">
+                    <div class="w3-card-4">
+                        <div class="w3-container text-center">
+                            <h3><b>مسئول</b></h3>
+                            <h4 class="w3-opacity">تسجيل دخول كمسئول</h4>
+                        </div>
+                        <img src="~/Images/2206368.svg" alt="Admin" style="width: 200px;height: 200px">
+                        <div class="w3-container">
+                            <p class="descriptionText"> يمكن للمسئول إدارة الطلاب وهئية التدريس و أيضاً المسئولين  ، يمكنه أيضا إدارة  المستويات والاقسام وقبول ورفض أعضاء هيئة التدريس  </p>
+                            <br />
+                            <p><a class="btn btn-custom" style="background-color: #428bca" href="@Url.Action("AdminLogin","Home")">تسجيل دخول</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="w3-container w3-light-grey homepageContainer" id="generalFaq">
+            <div class="row">
+                <header class="row text-center" style="padding-bottom:16px">
+                    <h3><b style="color:#428bca"> أسئلة شائعة</b></h3>
+                </header>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b><button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('forgotPassword')"> عند فقدان كلمة السر الخاصة بي ، كيف يمكنني استعادتها والدخول إلى حسابي ؟</button></b>
+                            <span style='float:right;margin-right:10px'>
+
+                                <button id='forgotPassword_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('forgotPassword')"><i class="fa fa-plus" style="font-size:x-large" id="forgotPassword_Icon"></i></button>
+
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='forgotPassword_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+
+                        <p style='font-size:16px;' >
+                            <ul>
+                                <li style="list-style-type: none">
+                                 . عند فقدان كلمة السر الخاص بك ، توجه مباشرة إلي خادم الموقع أو المسئول وسيتم التأكد من معلوماتك ومن ثم استرجاع كلمة السر الخاصة بك 
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w3-container homepageContainer" id="studentFaq">
+            <div class="row ">
+                <header class="row text-center" style="padding-bottom:16px">
+                    <h3><b style="color:#428bca"> أسئلة شائعة خاصة بالطلاب</b></h3>
+                </header>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('examAttempt')">
+                                    كيف يمكنني تسجيل دخول إلي النظام؟
+                                </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='examAttempt_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('examAttempt')"><i class="fa fa-plus" style="font-size:x-large" id='examAttempt_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='examAttempt_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;'>
+                            <ul style="list-style-type: none">
+                                <li>
+                                  . لا يمكنك تسجيل دخول إلي النظام إلا بعد تسجيل حساب أولا ، اذهب إلي زر تسجيل دخول الخاص بالطلاب من الصفحة الرئيسة وادخل البريد الالكتروني المسجل مسبقا وكلمة السر الخاصة بك ، وإذا كنت تسجل لأول مرة اذهب لصفحة تسجيل حساب جديد 
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('contactTeacher')">
+                                    كيف يمكنني تغيير كلمة السر الخاصة بي ؟
+                                </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='contactTeacher_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('contactTeacher')"><i class="fa fa-plus" style="font-size:x-large" id='contactTeacher_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='contactTeacher_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;'>
+                            <ul style="list-style-type: none">
+                                <li>
+                                  .  عند تسجيل الدخول والنجاح في ذلك > اذهب الاعدادات من القائمة الموجودة على شمال الصفحة > تغيير كلمة السر > قم بتغيرها وتأكد انك تتذكرها > اضغط حفظ
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('changeAnswer')">
+                                    كيف يمكنني الدخول إلى الامتحان ؟
+                                </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='changeAnswer_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('changeAnswer')"><i class="fa fa-plus" style="font-size:x-large" id='changeAnswer_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='changeAnswer_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;'>
+                            <ul style="list-style-type: none">
+                                <li>
+                                   . عند تسجيل الدخول والنجاح في ذلك > اذهب الامتحانات المتاحة نت القائمة الموجودة على شمال الصفحة >  وتصفح الامتحانات المتاحة.
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('viewQuestions')">
+                                    هل يمكنني رؤية درجاتي السابقة ؟
+                                </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='viewQuestions_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('viewQuestions')"><i class="fa fa-plus" style="font-size:x-large" id='viewQuestions_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='viewQuestions_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;'>
+                            <ul style="list-style-type: none">
+                                <li>
+                                   . نعم يمكنك رؤية جميع الامتحانات السابقة ودرجاتك الخاصة في كل امتحان
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('finishExamViewResult')">
+                                    هل يمكنني التواصل مع المدرسين ورؤية اجوبتي؟    
+                                 </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='finishExamViewResult_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('finishExamViewResult')"><i class="fa fa-plus" style="font-size:x-large" id='finishExamViewResult_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='finishExamViewResult_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;'>
+                            <ul>
+                                <li style="list-style-type: none">
+                                 . لا يمكنك التواصل مع المدرسين ولا يمكنهم رؤية اجوبتك ويتم التصحيح من خلال النظام اوتوماتيك
+                                   </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w3-container w3-light-grey homepageContainer" id="teacherFaq">
+            <div class="row ">
+                <header class="row text-center" style="padding-bottom:16px">
+                    <h3><b style="color:#428bca"> أسئلة شائعة خاصة بالمدرسين</b></h3>
+                </header>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('reopenExam')">
+                                    قمت بتسجيل حساب جديد ولا بمكنني تسجيل الدخول ، ما المشكلة ؟
+                                </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='reopenExam_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('reopenExam')"><i class="fa fa-plus" style="font-size:x-large" id='reopenExam_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='reopenExam_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;'>
+                            <ul style="list-style-type: none">
+                                <li>
+                                 لا يمكنك تسجيل الدخول إلى النظام إلا بعد موافقة المسئول على الطلب المرسل الخاص بك لكي تتمكن من تسجيل الدخول  
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('studentTakenExam')">
+                                   كيف يمكنني التعامل مع الطلاب ؟
+                                </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='studentTakenExam_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('studentTakenExam')"><i class="fa fa-plus" style="font-size:x-large" id='studentTakenExam_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='studentTakenExam_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;' >
+                            <ul style="list-style-type: none">
+                                <li>
+                                    يمكننك التعامل مع الطلاب بطريقة غير مباشرة وذلك من خلال إضافة إعلان جديد ومن دوره الظهور للجهة الموجه من الطلاب
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('seeAnswer')">
+                                    كيف يمكنني وضع الاسئلة ؟ وهل يمكنني رؤية أجوبة الطلاب ؟
+                                </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='seeAnswer_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('seeAnswer')"><i class="fa fa-plus" style="font-size:x-large" id='seeAnswer_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='seeAnswer_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;'>
+                            <ul style="list-style-type: none">
+                                <li>
+                                       يوجد نوعان من الاسئلة وهما الاختيار من متعدد والاختيار ما بين خطأ أم صواب ،لا يمكنكك رؤية الاجوبة الخاصة بالطلاب ولكن يمكنك تحديد الدرجة الخاصة بكل سؤال 
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-10 center-block" style="float:none">
+                <div class='panel panel-default' style='padding-left:0;border-color:lightgrey;padding-right:0;box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2), 0 4px 10px 0 rgba(0,0,0,0.13);'>
+                    <div class='panel-heading text-center' style='background-color:whitesmoke;margin-left:0;color:black;'>
+                        <div class='row' style='color:black;font-size:16px;'>
+                            <b>
+                                <button style='background-color:transparent;border:none;outline:none;color:black' onclick="openDetails('sortExamResult')">
+                                    هل يمكن لأحد أن يتحكم على صلاحياتي ؟
+                                </button>
+                            </b>
+                            <span style='float:right;margin-right:10px'>
+                                <button id='sortExamResult_Button' class='btn btn-default' style='padding:5px;' onclick="openDetails('sortExamResult')"><i class="fa fa-plus" style="font-size:x-large" id='sortExamResult_Icon'></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class='panel-body text-center' id='sortExamResult_Answer' style='display:none;padding-top:10px;padding-bottom:10px;width:100%'>
+                        <p style='font-size:16px;'>
+                            <ul style="list-style-type: none">
+                                <li>
+                                           لا يمكن لأحد أن يقوم بإدارة الامتحانات ولا المواضيع الخاصة بها إلا أنت ولا يمكن للمسئول التحكم في صلاحياتك
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <script>
+    $('#successMessage').delay(1500).fadeOut(300);
+    function openDetails(Id) {
+        console.log('here');
+        var openDetailButtonId = "#" + Id + "_Button";
+        var detailContainerId = "#" + Id + "_Answer";
+        var icon = "#" + Id + "_Icon";
+        if ($(detailContainerId).is(":visible")) {
+            $(detailContainerId).slideUp("fast", function () { });
+            $(detailContainerId).hide();
+            $(icon).removeClass("fa fa-minus");
+            $(icon).addClass("fa fa-plus");
+        }
+        else {
+            $(detailContainerId).slideDown("fast", function () { });
+            $(detailContainerId).show();
+            $(icon).removeClass("fa fa-plus");
+            $(icon).addClass("fa fa-minus");
+        }
+    }
+
+
+        </script>
+
+
+
+
+
+        <!-- Footer -->
+        <footer class="w3-center w3-custom w3-padding-16" style="background-color: #428bca ;color: white;">
+            <!--If want to include feature "go to the top" uncomment the following line-->
+
+
+            <div class="w3-xlarge w3-section">
+                <p>
+                    <i class="fa fa-user"></i>
+                </p>
+            </div>
+            <p style="font-size:18px"> محمد عيد 2020 </p>
+        </footer>
+        <!-- End page content -->
+
+
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+        <script src="~/Scripts/kendo/kendo.all.min.js"></script>
+        <script src="~/Scripts/kendo/kendo.aspnetmvc.min.js"></script>
+        <script src="~/Scripts/kendo/kendo.datepicker.min.js"></script>
+
+        <script src="~/Scripts/bootstrap.js"></script>
+
+
+        <script>
+        // Toggle between showing and hiding the sidebar
+        function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                $('#mySidebar').hide();
+                $('#myOverlay').hide();
+            } else {
+                $('#mySidebar').show();
+                $('#myOverlay').show();
+            }
+        }
+        // Close the sidebar with the close button
+        function w3_close() {
+            $('#mySidebar').hide();
+            $('#myOverlay').hide();
+        }
+        </script>
+</body>
+</html>
+
+
+

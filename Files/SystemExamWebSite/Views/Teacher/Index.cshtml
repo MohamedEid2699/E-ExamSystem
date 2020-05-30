@@ -1,0 +1,191 @@
+﻿@model IEnumerable<SystemExamWebSite.DataBase.tbl_Announcement>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان أونلاين | الصفحة الرئيسية </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/logonew.png">
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/assets/js/modernizr.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="mt-2">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="p-2 m-0 text-center">
+                <h3> <img src="~/assets/images/logoblue.png" width="120" height="50" /></h3>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu" class="pt-0 mt-0">
+                <!-- Left Menu Start -->
+                <ul class="metismenu text-right" id="side-menu">
+                    <li>
+                        <a href="@Url.Action("Index","Teacher")">
+                            <span> الرئيسية </span>   <i class="ti-bookmark"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("AnnouncementManagement","Teacher")">
+                            <span> إدارة الإعلانات </span> <i class="ti-announcement"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("SubjectManagement","Teacher")">
+                            <span> إدارة المواضيع </span> <i class="ti-file"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ExamManagement","Teacher")">
+                            <span> إدارة الامتحانات </span>  <i class="ti-agenda"></i>
+                        </a>
+                    </li>
+                    <li>
+                      
+                        <a href="javascript: void(0);">
+                            <span> إدارة الاسئلة </span>  <i class="ti-help"></i>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="@Url.Action("MCQ","Teacher")">إضافة سؤال إختياري</a></li>
+                            <li><a href="@Url.Action("TrueFalse","Teacher")">إضافة سؤال تصحيحي</a></li>
+                            <li><a  href="@Url.Action("QuestionsMangement","Teacher")">عرض الامتحانات</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Student","Teacher")">
+                            <span> الطلاب </span>  <i class="ti-id-badge"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ExamResult","Teacher")">
+                            <span> نتائج الامتحانات </span>  <i class="ti-cup"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);">
+                            <span> الإعدادت </span>  <i class="ti-settings"></i>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="@Url.Action("DetailsMe","Teacher")">تفاصيل الحساب</a></li>
+                            <li><a href="@Url.Action("EditMe","Teacher")">تعديل الحساب</a></li>
+                            <li><a href="@Url.Action("DeleteMe","Teacher")">حذف الحساب</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Logout","Teacher")">
+                            <span> تسجيل خروج </span>  <i class="ti-export"></i>
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="header-title m-t-0 m-b-20 text-right">الرئيسية <span class="ti-bookmark"> </span></h4>
+
+                            <h3 class="text-right">  <span>@ViewBag.Name</span>   <span>أهلا بك </span> <span class="ti-user"></span></h3>
+                            <hr />
+                            <p class="text-center w3-hover-text-deep-orange" style="font-size:20px">
+                                الإعلانات التي قومت بنشرها
+                            </p>
+                            <br />
+                            @foreach (var item in Model)
+                            {
+                                <div class="container btn-primary" style="border-radius:20px">
+                                    <div class="text-right" style="font-size:25px;">
+                                       <span class="">@Html.DisplayFor(modelItem => item.tbl_Teacher.Teacher_Name)</span> <i class="fa fa-user"></i>
+                                        <br />
+                                        <div style="font-size:15px; padding-right:15px; margin-top:-7px;"><span class="">@Html.DisplayFor(modelItem => item.Announcement_CreatedOn)</span> <i class="fa fa-clock-o"></i></div>
+                                    </div>
+                                    <div class="panel table-bordered text-center">
+                                        <div class="panel-heading" style="font-size:22px">
+                                            <span>@Html.DisplayFor(modelItem => item.Announcement_Title)</span>
+                                        </div>
+                                        <div class="row" style="font-size:18px;">
+                                            <div class="col-md-6"><span>@Html.DisplayFor(modelItem => item.tbl_Level.Level_Name)</span></div>
+                                            <div class="col-md-6"><span>@Html.DisplayFor(modelItem => item.tbl_Department.Department_Name)</span></div>
+                                            </div>
+                                        <div class="text-primary" style="font-size:22px;background-color:white">
+                                            @Html.DisplayFor(modelItem => item.Announcement_Details)
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                            }
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- container -->
+                <div class="footer">
+                    <div class="pull-right hide-phone">
+                        محمد عيد 2020
+                    </div>
+                </div>
+
+            </div> <!-- content -->
+
+        </div>
+
+
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/jquery.core.js"></script>
+    <script src="~/assets/js/jquery.app.js"></script>
+
+</body>
+</html>

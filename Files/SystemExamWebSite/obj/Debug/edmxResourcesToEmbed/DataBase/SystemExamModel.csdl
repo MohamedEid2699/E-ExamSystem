@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ExamSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Admin" EntityType="ExamSystemModel.tbl_Admin" />
+    <EntitySet Name="tbl_Announcement" EntityType="ExamSystemModel.tbl_Announcement" />
+    <EntitySet Name="tbl_Department" EntityType="ExamSystemModel.tbl_Department" />
+    <EntitySet Name="tbl_Exam" EntityType="ExamSystemModel.tbl_Exam" />
+    <EntitySet Name="tbl_Level" EntityType="ExamSystemModel.tbl_Level" />
+    <EntitySet Name="tbl_QuestionMCQ" EntityType="ExamSystemModel.tbl_QuestionMCQ" />
+    <EntitySet Name="tbl_QuestionTrueFalse" EntityType="ExamSystemModel.tbl_QuestionTrueFalse" />
+    <EntitySet Name="tbl_Result" EntityType="ExamSystemModel.tbl_Result" />
+    <EntitySet Name="tbl_Student" EntityType="ExamSystemModel.tbl_Student" />
+    <EntitySet Name="tbl_Subject" EntityType="ExamSystemModel.tbl_Subject" />
+    <EntitySet Name="tbl_Teacher" EntityType="ExamSystemModel.tbl_Teacher" />
+    <AssociationSet Name="FK_tbl_Announcement_tbl_Department1" Association="ExamSystemModel.FK_tbl_Announcement_tbl_Department1">
+      <End Role="tbl_Department" EntitySet="tbl_Department" />
+      <End Role="tbl_Announcement" EntitySet="tbl_Announcement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Announcement_tbl_Level1" Association="ExamSystemModel.FK_tbl_Announcement_tbl_Level1">
+      <End Role="tbl_Level" EntitySet="tbl_Level" />
+      <End Role="tbl_Announcement" EntitySet="tbl_Announcement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Announcement_tbl_Teacher1" Association="ExamSystemModel.FK_tbl_Announcement_tbl_Teacher1">
+      <End Role="tbl_Teacher" EntitySet="tbl_Teacher" />
+      <End Role="tbl_Announcement" EntitySet="tbl_Announcement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Student_tbl_Department" Association="ExamSystemModel.FK_tbl_Student_tbl_Department">
+      <End Role="tbl_Department" EntitySet="tbl_Department" />
+      <End Role="tbl_Student" EntitySet="tbl_Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Subject_tbl_Department" Association="ExamSystemModel.FK_tbl_Subject_tbl_Department">
+      <End Role="tbl_Department" EntitySet="tbl_Department" />
+      <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Exam_tbl_Subject" Association="ExamSystemModel.FK_tbl_Exam_tbl_Subject">
+      <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+      <End Role="tbl_Exam" EntitySet="tbl_Exam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Exam_tbl_Teacher" Association="ExamSystemModel.FK_tbl_Exam_tbl_Teacher">
+      <End Role="tbl_Teacher" EntitySet="tbl_Teacher" />
+      <End Role="tbl_Exam" EntitySet="tbl_Exam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Exam_tbl_Teacher1" Association="ExamSystemModel.FK_tbl_Exam_tbl_Teacher1">
+      <End Role="tbl_Teacher" EntitySet="tbl_Teacher" />
+      <End Role="tbl_Exam" EntitySet="tbl_Exam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_QuestionMCQ_tbl_Exam" Association="ExamSystemModel.FK_tbl_QuestionMCQ_tbl_Exam">
+      <End Role="tbl_Exam" EntitySet="tbl_Exam" />
+      <End Role="tbl_QuestionMCQ" EntitySet="tbl_QuestionMCQ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_QuestionTrueFalse_tbl_Exam" Association="ExamSystemModel.FK_tbl_QuestionTrueFalse_tbl_Exam">
+      <End Role="tbl_Exam" EntitySet="tbl_Exam" />
+      <End Role="tbl_QuestionTrueFalse" EntitySet="tbl_QuestionTrueFalse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Result_tbl_Exam" Association="ExamSystemModel.FK_tbl_Result_tbl_Exam">
+      <End Role="tbl_Exam" EntitySet="tbl_Exam" />
+      <End Role="tbl_Result" EntitySet="tbl_Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Student_tbl_Level" Association="ExamSystemModel.FK_tbl_Student_tbl_Level">
+      <End Role="tbl_Level" EntitySet="tbl_Level" />
+      <End Role="tbl_Student" EntitySet="tbl_Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Subject_tbl_Level" Association="ExamSystemModel.FK_tbl_Subject_tbl_Level">
+      <End Role="tbl_Level" EntitySet="tbl_Level" />
+      <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_QuestionMCQ_tbl_Teacher" Association="ExamSystemModel.FK_tbl_QuestionMCQ_tbl_Teacher">
+      <End Role="tbl_Teacher" EntitySet="tbl_Teacher" />
+      <End Role="tbl_QuestionMCQ" EntitySet="tbl_QuestionMCQ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_QuestionTrueFalse_tbl_Teacher" Association="ExamSystemModel.FK_tbl_QuestionTrueFalse_tbl_Teacher">
+      <End Role="tbl_Teacher" EntitySet="tbl_Teacher" />
+      <End Role="tbl_QuestionTrueFalse" EntitySet="tbl_QuestionTrueFalse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Result_tbl_Student" Association="ExamSystemModel.FK_tbl_Result_tbl_Student">
+      <End Role="tbl_Student" EntitySet="tbl_Student" />
+      <End Role="tbl_Result" EntitySet="tbl_Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Subject_tbl_Teacher" Association="ExamSystemModel.FK_tbl_Subject_tbl_Teacher">
+      <End Role="tbl_Teacher" EntitySet="tbl_Teacher" />
+      <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbl_Admin">
+    <Key>
+      <PropertyRef Name="Admin_Id" />
+    </Key>
+    <Property Name="Admin_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Admin_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Admin_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Admin_Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Admin_Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Admin_CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Announcement">
+    <Key>
+      <PropertyRef Name="Announcement_Id" />
+    </Key>
+    <Property Name="Announcement_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Announcement_Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Announcement_Details" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Announcement_CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Teacher_Id" Type="Int32" Nullable="false" />
+    <Property Name="Level_Id" Type="Int32" Nullable="false" />
+    <Property Name="Department_Id" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbl_Department" Relationship="ExamSystemModel.FK_tbl_Announcement_tbl_Department1" FromRole="tbl_Announcement" ToRole="tbl_Department" />
+    <NavigationProperty Name="tbl_Level" Relationship="ExamSystemModel.FK_tbl_Announcement_tbl_Level1" FromRole="tbl_Announcement" ToRole="tbl_Level" />
+    <NavigationProperty Name="tbl_Teacher" Relationship="ExamSystemModel.FK_tbl_Announcement_tbl_Teacher1" FromRole="tbl_Announcement" ToRole="tbl_Teacher" />
+  </EntityType>
+  <EntityType Name="tbl_Department">
+    <Key>
+      <PropertyRef Name="Department_Id" />
+    </Key>
+    <Property Name="Department_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Department_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Department_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Announcement" Relationship="ExamSystemModel.FK_tbl_Announcement_tbl_Department1" FromRole="tbl_Department" ToRole="tbl_Announcement" />
+    <NavigationProperty Name="tbl_Student" Relationship="ExamSystemModel.FK_tbl_Student_tbl_Department" FromRole="tbl_Department" ToRole="tbl_Student" />
+    <NavigationProperty Name="tbl_Subject" Relationship="ExamSystemModel.FK_tbl_Subject_tbl_Department" FromRole="tbl_Department" ToRole="tbl_Subject" />
+  </EntityType>
+  <EntityType Name="tbl_Exam">
+    <Key>
+      <PropertyRef Name="Exam_Id" />
+    </Key>
+    <Property Name="Exam_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Exam_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Exam_Instruction" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Exam_MuniteDuration" Type="Int32" Nullable="false" />
+    <Property Name="Exam_TotalMark" Type="Int32" Nullable="false" />
+    <Property Name="Exam_StartOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Exam_EndOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Exam_PassingMark" Type="Int32" Nullable="false" />
+    <Property Name="Teacher_Id" Type="Int32" Nullable="false" />
+    <Property Name="Subject_Id" Type="Int32" Nullable="false" />
+    <Property Name="Exam_CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="tbl_Subject" Relationship="ExamSystemModel.FK_tbl_Exam_tbl_Subject" FromRole="tbl_Exam" ToRole="tbl_Subject" />
+    <NavigationProperty Name="tbl_Teacher" Relationship="ExamSystemModel.FK_tbl_Exam_tbl_Teacher" FromRole="tbl_Exam" ToRole="tbl_Teacher" />
+    <NavigationProperty Name="tbl_QuestionMCQ" Relationship="ExamSystemModel.FK_tbl_QuestionMCQ_tbl_Exam" FromRole="tbl_Exam" ToRole="tbl_QuestionMCQ" />
+    <NavigationProperty Name="tbl_QuestionTrueFalse" Relationship="ExamSystemModel.FK_tbl_QuestionTrueFalse_tbl_Exam" FromRole="tbl_Exam" ToRole="tbl_QuestionTrueFalse" />
+    <NavigationProperty Name="tbl_Result" Relationship="ExamSystemModel.FK_tbl_Result_tbl_Exam" FromRole="tbl_Exam" ToRole="tbl_Result" />
+  </EntityType>
+  <EntityType Name="tbl_Level">
+    <Key>
+      <PropertyRef Name="Level_Id" />
+    </Key>
+    <Property Name="Level_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Level_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Level_Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Announcement" Relationship="ExamSystemModel.FK_tbl_Announcement_tbl_Level1" FromRole="tbl_Level" ToRole="tbl_Announcement" />
+    <NavigationProperty Name="tbl_Student" Relationship="ExamSystemModel.FK_tbl_Student_tbl_Level" FromRole="tbl_Level" ToRole="tbl_Student" />
+    <NavigationProperty Name="tbl_Subject" Relationship="ExamSystemModel.FK_tbl_Subject_tbl_Level" FromRole="tbl_Level" ToRole="tbl_Subject" />
+  </EntityType>
+  <EntityType Name="tbl_QuestionMCQ">
+    <Key>
+      <PropertyRef Name="QuestionMCQ_Id" />
+    </Key>
+    <Property Name="QuestionMCQ_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionMCQ_Text" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionMCQ_OptionA" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionMCQ_OptionB" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionMCQ_OptionC" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionMCQ_OptionD" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionMCQ_CorrectAnswer" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionMCQ_Mark" Type="Int32" Nullable="false" />
+    <Property Name="Teacher_Id" Type="Int32" Nullable="false" />
+    <Property Name="Exam_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_Exam" Relationship="ExamSystemModel.FK_tbl_QuestionMCQ_tbl_Exam" FromRole="tbl_QuestionMCQ" ToRole="tbl_Exam" />
+    <NavigationProperty Name="tbl_Teacher" Relationship="ExamSystemModel.FK_tbl_QuestionMCQ_tbl_Teacher" FromRole="tbl_QuestionMCQ" ToRole="tbl_Teacher" />
+  </EntityType>
+  <EntityType Name="tbl_QuestionTrueFalse">
+    <Key>
+      <PropertyRef Name="QuestionTrueFalse_Id" />
+    </Key>
+    <Property Name="QuestionTrueFalse_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionTrueFalse_text" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionTrueFalse_OptionA" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionTrueFalse_OptionB" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionTrueFalse_CorrectAnswer" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionTrueFalse_Mark" Type="Int32" Nullable="false" />
+    <Property Name="Teacher_Id" Type="Int32" Nullable="false" />
+    <Property Name="Exam_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_Exam" Relationship="ExamSystemModel.FK_tbl_QuestionTrueFalse_tbl_Exam" FromRole="tbl_QuestionTrueFalse" ToRole="tbl_Exam" />
+    <NavigationProperty Name="tbl_Teacher" Relationship="ExamSystemModel.FK_tbl_QuestionTrueFalse_tbl_Teacher" FromRole="tbl_QuestionTrueFalse" ToRole="tbl_Teacher" />
+  </EntityType>
+  <EntityType Name="tbl_Result">
+    <Key>
+      <PropertyRef Name="Result_Id" />
+    </Key>
+    <Property Name="Result_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Student_Id" Type="Int32" Nullable="false" />
+    <Property Name="Exam_Id" Type="Int32" Nullable="false" />
+    <Property Name="Student_Mark" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_Exam" Relationship="ExamSystemModel.FK_tbl_Result_tbl_Exam" FromRole="tbl_Result" ToRole="tbl_Exam" />
+    <NavigationProperty Name="tbl_Student" Relationship="ExamSystemModel.FK_tbl_Result_tbl_Student" FromRole="tbl_Result" ToRole="tbl_Student" />
+  </EntityType>
+  <EntityType Name="tbl_Student">
+    <Key>
+      <PropertyRef Name="Student_Id" />
+    </Key>
+    <Property Name="Student_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Student_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Student_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Student_Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Student_Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Student_CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Level_Id" Type="Int32" Nullable="false" />
+    <Property Name="Department_Id" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbl_Department" Relationship="ExamSystemModel.FK_tbl_Student_tbl_Department" FromRole="tbl_Student" ToRole="tbl_Department" />
+    <NavigationProperty Name="tbl_Level" Relationship="ExamSystemModel.FK_tbl_Student_tbl_Level" FromRole="tbl_Student" ToRole="tbl_Level" />
+    <NavigationProperty Name="tbl_Result" Relationship="ExamSystemModel.FK_tbl_Result_tbl_Student" FromRole="tbl_Student" ToRole="tbl_Result" />
+  </EntityType>
+  <EntityType Name="tbl_Subject">
+    <Key>
+      <PropertyRef Name="Subject_Id" />
+    </Key>
+    <Property Name="Subject_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Subject_Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Subject_CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Level_Id" Type="Int32" Nullable="false" />
+    <Property Name="Department_Id" Type="Int32" Nullable="false" />
+    <Property Name="Teacher_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tbl_Department" Relationship="ExamSystemModel.FK_tbl_Subject_tbl_Department" FromRole="tbl_Subject" ToRole="tbl_Department" />
+    <NavigationProperty Name="tbl_Exam" Relationship="ExamSystemModel.FK_tbl_Exam_tbl_Subject" FromRole="tbl_Subject" ToRole="tbl_Exam" />
+    <NavigationProperty Name="tbl_Level" Relationship="ExamSystemModel.FK_tbl_Subject_tbl_Level" FromRole="tbl_Subject" ToRole="tbl_Level" />
+    <NavigationProperty Name="tbl_Teacher" Relationship="ExamSystemModel.FK_tbl_Subject_tbl_Teacher" FromRole="tbl_Subject" ToRole="tbl_Teacher" />
+  </EntityType>
+  <EntityType Name="tbl_Teacher">
+    <Key>
+      <PropertyRef Name="Teacher_Id" />
+    </Key>
+    <Property Name="Teacher_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Teacher_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Teacher_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Teacher_Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Teacher_Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Teacher_CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsAccepted" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbl_Announcement" Relationship="ExamSystemModel.FK_tbl_Announcement_tbl_Teacher1" FromRole="tbl_Teacher" ToRole="tbl_Announcement" />
+    <NavigationProperty Name="tbl_Exam" Relationship="ExamSystemModel.FK_tbl_Exam_tbl_Teacher" FromRole="tbl_Teacher" ToRole="tbl_Exam" />
+    <NavigationProperty Name="tbl_QuestionMCQ" Relationship="ExamSystemModel.FK_tbl_QuestionMCQ_tbl_Teacher" FromRole="tbl_Teacher" ToRole="tbl_QuestionMCQ" />
+    <NavigationProperty Name="tbl_QuestionTrueFalse" Relationship="ExamSystemModel.FK_tbl_QuestionTrueFalse_tbl_Teacher" FromRole="tbl_Teacher" ToRole="tbl_QuestionTrueFalse" />
+    <NavigationProperty Name="tbl_Subject" Relationship="ExamSystemModel.FK_tbl_Subject_tbl_Teacher" FromRole="tbl_Teacher" ToRole="tbl_Subject" />
+  </EntityType>
+  <Association Name="FK_tbl_Announcement_tbl_Department1">
+    <End Type="ExamSystemModel.tbl_Department" Role="tbl_Department" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Announcement" Role="tbl_Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Department">
+        <PropertyRef Name="Department_Id" />
+      </Principal>
+      <Dependent Role="tbl_Announcement">
+        <PropertyRef Name="Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Announcement_tbl_Level1">
+    <End Type="ExamSystemModel.tbl_Level" Role="tbl_Level" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Announcement" Role="tbl_Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Level">
+        <PropertyRef Name="Level_Id" />
+      </Principal>
+      <Dependent Role="tbl_Announcement">
+        <PropertyRef Name="Level_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Announcement_tbl_Teacher1">
+    <End Type="ExamSystemModel.tbl_Teacher" Role="tbl_Teacher" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Announcement" Role="tbl_Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Teacher">
+        <PropertyRef Name="Teacher_Id" />
+      </Principal>
+      <Dependent Role="tbl_Announcement">
+        <PropertyRef Name="Teacher_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Student_tbl_Department">
+    <End Type="ExamSystemModel.tbl_Department" Role="tbl_Department" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Student" Role="tbl_Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Department">
+        <PropertyRef Name="Department_Id" />
+      </Principal>
+      <Dependent Role="tbl_Student">
+        <PropertyRef Name="Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Subject_tbl_Department">
+    <End Type="ExamSystemModel.tbl_Department" Role="tbl_Department" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Subject" Role="tbl_Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Department">
+        <PropertyRef Name="Department_Id" />
+      </Principal>
+      <Dependent Role="tbl_Subject">
+        <PropertyRef Name="Department_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Exam_tbl_Subject">
+    <End Type="ExamSystemModel.tbl_Subject" Role="tbl_Subject" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Exam" Role="tbl_Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Subject">
+        <PropertyRef Name="Subject_Id" />
+      </Principal>
+      <Dependent Role="tbl_Exam">
+        <PropertyRef Name="Subject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Exam_tbl_Teacher">
+    <End Type="ExamSystemModel.tbl_Teacher" Role="tbl_Teacher" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Exam" Role="tbl_Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Teacher">
+        <PropertyRef Name="Teacher_Id" />
+      </Principal>
+      <Dependent Role="tbl_Exam">
+        <PropertyRef Name="Teacher_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Exam_tbl_Teacher1">
+    <End Type="ExamSystemModel.tbl_Teacher" Role="tbl_Teacher" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Exam" Role="tbl_Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Teacher">
+        <PropertyRef Name="Teacher_Id" />
+      </Principal>
+      <Dependent Role="tbl_Exam">
+        <PropertyRef Name="Teacher_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_QuestionMCQ_tbl_Exam">
+    <End Type="ExamSystemModel.tbl_Exam" Role="tbl_Exam" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_QuestionMCQ" Role="tbl_QuestionMCQ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Exam">
+        <PropertyRef Name="Exam_Id" />
+      </Principal>
+      <Dependent Role="tbl_QuestionMCQ">
+        <PropertyRef Name="Exam_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_QuestionTrueFalse_tbl_Exam">
+    <End Type="ExamSystemModel.tbl_Exam" Role="tbl_Exam" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_QuestionTrueFalse" Role="tbl_QuestionTrueFalse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Exam">
+        <PropertyRef Name="Exam_Id" />
+      </Principal>
+      <Dependent Role="tbl_QuestionTrueFalse">
+        <PropertyRef Name="Exam_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Result_tbl_Exam">
+    <End Type="ExamSystemModel.tbl_Exam" Role="tbl_Exam" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Result" Role="tbl_Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Exam">
+        <PropertyRef Name="Exam_Id" />
+      </Principal>
+      <Dependent Role="tbl_Result">
+        <PropertyRef Name="Exam_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Student_tbl_Level">
+    <End Type="ExamSystemModel.tbl_Level" Role="tbl_Level" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Student" Role="tbl_Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Level">
+        <PropertyRef Name="Level_Id" />
+      </Principal>
+      <Dependent Role="tbl_Student">
+        <PropertyRef Name="Level_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Subject_tbl_Level">
+    <End Type="ExamSystemModel.tbl_Level" Role="tbl_Level" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Subject" Role="tbl_Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Level">
+        <PropertyRef Name="Level_Id" />
+      </Principal>
+      <Dependent Role="tbl_Subject">
+        <PropertyRef Name="Level_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_QuestionMCQ_tbl_Teacher">
+    <End Type="ExamSystemModel.tbl_Teacher" Role="tbl_Teacher" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_QuestionMCQ" Role="tbl_QuestionMCQ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Teacher">
+        <PropertyRef Name="Teacher_Id" />
+      </Principal>
+      <Dependent Role="tbl_QuestionMCQ">
+        <PropertyRef Name="Teacher_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_QuestionTrueFalse_tbl_Teacher">
+    <End Type="ExamSystemModel.tbl_Teacher" Role="tbl_Teacher" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_QuestionTrueFalse" Role="tbl_QuestionTrueFalse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Teacher">
+        <PropertyRef Name="Teacher_Id" />
+      </Principal>
+      <Dependent Role="tbl_QuestionTrueFalse">
+        <PropertyRef Name="Teacher_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Result_tbl_Student">
+    <End Type="ExamSystemModel.tbl_Student" Role="tbl_Student" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Result" Role="tbl_Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Student">
+        <PropertyRef Name="Student_Id" />
+      </Principal>
+      <Dependent Role="tbl_Result">
+        <PropertyRef Name="Student_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Subject_tbl_Teacher">
+    <End Type="ExamSystemModel.tbl_Teacher" Role="tbl_Teacher" Multiplicity="1" />
+    <End Type="ExamSystemModel.tbl_Subject" Role="tbl_Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Teacher">
+        <PropertyRef Name="Teacher_Id" />
+      </Principal>
+      <Dependent Role="tbl_Subject">
+        <PropertyRef Name="Teacher_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

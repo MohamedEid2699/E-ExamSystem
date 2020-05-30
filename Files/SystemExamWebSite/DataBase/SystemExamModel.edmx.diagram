@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba936c40ab9943c081720b9683859474" Name="Diagram1" ZoomLevel="87">
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Admin" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Announcement" Width="1.5" PointX="6" PointY="9" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Department" Width="1.5" PointX="3.75" PointY="4" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Exam" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Level" Width="1.5" PointX="3.75" PointY="1" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_QuestionMCQ" Width="1.5" PointX="5.25" PointY="12.875" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_QuestionTrueFalse" Width="1.5" PointX="8.25" PointY="5.125" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Result" Width="1.5" PointX="8.25" PointY="9.5" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Student" Width="1.5" PointX="6" PointY="0.875" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Subject" Width="1.5" PointX="6" PointY="5" />
+        <EntityTypeShape EntityType="ExamSystemModel.tbl_Teacher" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Announcement_tbl_Department1" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Announcement_tbl_Level1" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Announcement_tbl_Teacher1" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Student_tbl_Department" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Subject_tbl_Department" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Exam_tbl_Subject" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Exam_tbl_Teacher" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Exam_tbl_Teacher1" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_QuestionMCQ_tbl_Exam" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_QuestionTrueFalse_tbl_Exam" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Result_tbl_Exam" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Student_tbl_Level" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Subject_tbl_Level" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_QuestionMCQ_tbl_Teacher" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_QuestionTrueFalse_tbl_Teacher" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Result_tbl_Student" />
+        <AssociationConnector Association="ExamSystemModel.FK_tbl_Subject_tbl_Teacher" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

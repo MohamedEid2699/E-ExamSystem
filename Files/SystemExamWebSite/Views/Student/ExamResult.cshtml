@@ -1,0 +1,202 @@
+﻿@model IEnumerable<SystemExamWebSite.DataBase.tbl_Result>
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>  إمتحان أونلاين | نتائجي </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="نظام إمتحان أونلاين" name="description" />
+    <meta content="MohamedEid" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/logonew.png">
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/assets/js/modernizr.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper" class="mt-2">
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="p-2 m-0 text-center">
+                <h3> <img src="~/assets/images/logoblue.png" width="120" height="50" /></h3>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu" class="pt-0 mt-0">
+                <!-- Left Menu Start -->
+                <ul class="metismenu text-right" id="side-menu">
+                    <li>
+                        <a href="@Url.Action("Index","Student")">
+                            <span> الرئيسية </span>   <i class="ti-bookmark"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("AvaliableExam","Student")">
+                            <span> الامتحانات المتاحة </span> <i class="ti-filter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ExamResult","Student")">
+                            <span> نتائج الامتحانات </span>  <i class="ti-bar-chart"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);">
+                            <span> الإعدادت </span>  <i class="ti-settings"></i>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="@Url.Action("DetailsMe","Student")">تفاصيل الحساب</a></li>
+                            <li><a href="@Url.Action("EditMe","Student")">تعديل الحساب</a></li>
+                            <li><a href="@Url.Action("DeleteMe","Student")">حذف الحساب</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Logout","Student")">
+                            <span> تسجيل خروج </span>  <i class="ti-export"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Sidebar -->
+            <div class="clearfix"></div>
+
+        </div>
+
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="header-title m-t-0 m-b-20 text-right">  نتيجتي <span class="fa fa-eye"> </span></h4>
+                            <hr />
+                            <table class="table table-striped table-bordered">
+                                <tr>
+                                    <th>
+                                        اسم المادة
+                                    </th>
+                                    <th>
+                                        درجتك
+                                    </th>
+                                    <th>
+                                        درجات النجاح
+
+                                    </th>
+
+                                    <th>
+                                        الدرجة النهائة
+
+                                    </th>
+                                    <th>
+                                        الحالة
+                                    </th>
+                                </tr>
+                                @if (Model.Count() == 0)
+                                {
+                                    <tr>
+                                        <td colspan="5"> <p class="text-center text-muted"> لا توجد بيانات متاحة لعرضها </p></td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbl_Exam.Exam_Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Student_Mark)
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbl_Exam.Exam_PassingMark)
+
+
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.tbl_Exam.Exam_TotalMark)
+
+                                            </td>
+                                            <td>
+                                                @if (item.tbl_Exam.Exam_PassingMark > item.Student_Mark)
+                                                {
+                                                    <p class="text-danger"> غير كُفء </p>
+
+                                                }
+                                                else
+                                                {
+                                                    <p class="text-success"> ناجح </p>
+
+                                                }
+                                            </td>
+
+                                        </tr>
+                                    }
+                                }
+
+                            </table>
+
+
+                            <br />
+                            <br />
+                        
+
+                        </div>
+                    </div>
+                </div>
+                <!-- container -->
+                <div class="footer">
+                    <div class="pull-right hide-phone">
+                        محمد عيد 2020
+                    </div>
+                </div>
+            </div> <!-- content -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+
+    </div>
+
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/jquery.core.js"></script>
+    <script src="~/assets/js/jquery.app.js"></script>
+
+</body>
+</html>
